@@ -1,0 +1,136 @@
+diff --git a/Src/Zle/zle_main.c b/Src/Zle/zle_main.c
+index 8c0534708c..5f4ae09457 100644
+--- a/Src/Zle/zle_main.c
++++ b/Src/Zle/zle_main.c
+@@ -1260,6 +1260,7 @@ zleread(char **lp, char **rp, int flags, int context, char *init, char *finish)
+     resetneeded = 0;
+     fetchttyinfo = 0;
+     trashedzle = 0;
++    maxheight = 0;
+     raw_lp = lp;
+     lpromptbuf = promptexpand(lp ? *lp : NULL, 1, NULL, NULL, &pmpt_attr);
+     raw_rp = rp;
+diff --git a/Src/Zle/zle_refresh.c b/Src/Zle/zle_refresh.c
+index 7b8593dec0..ba0f697cb8 100644
+--- a/Src/Zle/zle_refresh.c
++++ b/Src/Zle/zle_refresh.c
+@@ -187,6 +187,11 @@ mod_export int clearflag;
+ /**/
+ mod_export int clearlist;
+ 
++/* Maximum value of lprompth + nlnct for the current command */
++
++/**/
++int maxheight;
++
+ /* Zle in trashed state - updates may be subtly altered */
+ 
+ /**/
+@@ -1133,10 +1138,15 @@ zrefresh(void)
+ 	zsetterm();
+ #ifdef TIOCGWINSZ
+ 	if (winchanged) {
+-	    moveto(0, 0);
++	    if (cursorsaved) {
++		tcout(TCRESTRCURSOR);
++		zputc(&zr_cr);
++		vln = vcs = 0;
++	    } else {
++		moveto(0, 0);
++	    }
+ 	    t0 = olnct;		/* this is to clear extra lines even when */
+-	    winchanged = 0;	/* the terminal cannot TCCLEAREOD	  */
+-	    listshown = 0;
++	    listshown = 0;	/* the terminal cannot TCCLEAREOD	  */
+ 	}
+ #endif
+ 	/* we probably should only have explicitly set attributes */
+@@ -1164,6 +1174,8 @@ zrefresh(void)
+ 	if (termflags & TERM_SHORT)
+ 	    vcs = 0;
+ 	else if (!clearflag && lpromptbuf[0]) {
++	    if ((cursorsaved = tccan(TCSAVECURSOR) && tccan(TCRESTRCURSOR)))
++		tcout(TCSAVECURSOR);
+ 	    zputs(lpromptbuf, shout);
+ 	    if (lpromptwof == winw)
+ 		zputs("\n", shout);	/* works with both hasam and !hasam */
+@@ -1185,6 +1197,7 @@ zrefresh(void)
+    width comparisons can be made with winw, height comparisons with winh */
+ 
+     if (termflags & TERM_SHORT) {
++	cursorsaved = 0;
+ 	singlerefresh(tmpline, tmpll, tmpcs);
+ 	goto singlelineout;
+     }
+@@ -1737,6 +1750,16 @@ individually */
+     clearf = 0;
+     oput_rpmpt = put_rpmpt;
+ 
++    if (lprompth + nlnct > maxheight) {
++	maxheight = lprompth + nlnct;
++	if (lprompth + nlnct > rwinh) {
++	    cursorsaved = 0;
++	} else if (cursorsaved) {
++	    moveto(1 - lprompth, 0);
++	    tcout(TCSAVECURSOR);
++	}
++    }
++
+ /* move to the new cursor position */
+     moveto(rpms.nvln, rpms.nvcs);
+ 
+diff --git a/Src/utils.c b/Src/utils.c
+index 5158a70b1c..8f20d908ad 100644
+--- a/Src/utils.c
++++ b/Src/utils.c
+@@ -1860,6 +1860,11 @@ mod_export int resetneeded;
+ mod_export int winchanged;
+ #endif
+ 
++/* whether prompt start position was saved  */
++
++/**/
++mod_export int cursorsaved;
++
+ static int
+ adjustlines(int signalled)
+ {
+@@ -1961,8 +1966,11 @@ adjustwinsize(int from)
+ 	 * The commented "else return;" above might be a safe shortcut,   *
+ 	 * but I'm concerned about what happens on race conditions; e.g., *
+ 	 * suppose the user resizes his xterm during `eval $(resize)'?    */
+-	if (adjustlines(from) && zgetenv("LINES"))
+-	    setiparam("LINES", zterm_lines);
++	if (adjustlines(from)) {
++	    if (zgetenv("LINES"))
++		setiparam("LINES", zterm_lines);
++	    cursorsaved = 0;
++        }
+ 	if (adjustcolumns(from) && zgetenv("COLUMNS"))
+ 	    setiparam("COLUMNS", zterm_columns);
+ 	getwinsz = 1;
+@@ -1986,11 +1994,22 @@ adjustwinsize(int from)
+ 
+     if (zleactive && resetzle) {
+ #ifdef TIOCGWINSZ
+-	winchanged =
+-#endif /* TIOCGWINSZ */
+-	    resetneeded = 1;
++	if (winchanged) {
++	    winchanged = 2;
++	} else {
++	    do {
++		winchanged = resetneeded = 1;
++		zleentry(ZLE_CMD_RESET_PROMPT);
++		if (winchanged == 1)
++		    zleentry(ZLE_CMD_REFRESH);
++	    } while (winchanged != 1);
++	    winchanged = 0;
++	}
++#else
++	resetneeded = 1;
+ 	zleentry(ZLE_CMD_RESET_PROMPT);
+ 	zleentry(ZLE_CMD_REFRESH);
++#endif /* TIOCGWINSZ */
+     }
+ }
