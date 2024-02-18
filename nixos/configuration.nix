@@ -155,6 +155,7 @@
     cmake
 
     glava
+    glxinfo
     vlc
     chromium
     neovide
