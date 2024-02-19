@@ -8,7 +8,6 @@ in
 {
   imports =
     [
-      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
       inputs.impermanence.nixosModules.impermanence
@@ -16,6 +15,17 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Setup Filesystems (with impermanence)
+  fileSystems."/persist".neededForBoot = true;
+  environment.persistence."/persist/system" = persist-system;
+  # Impermanence format
+  boot.initrd.postDeviceCommands = format-command;
+
+  # Bootloader.
+  boot.loader.grub.enable = true;
+
+
+  # Home Manager
   programs.fuse.userAllowOther = true;
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -25,9 +35,11 @@ in
   };
 
 
+  # Default Shell
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  # Default User
   users.users.mia = {
     isNormalUser = true;
     description = "Mia";
@@ -37,14 +49,6 @@ in
     shell = pkgs.zsh;
     packages = with pkgs; [ ];
   };
-
-  fileSystems."/persist".neededForBoot = true;
-  environment.persistence."/persist/system" = persist-system;
-
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  # Impermanence format
-  boot.initrd.postDeviceCommands = format-command;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

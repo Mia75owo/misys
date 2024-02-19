@@ -4,18 +4,18 @@ let inherit (import ./impermanence/persist.nix) persist-home;
 
 in {
   imports = [
-    ./components/globals.user.nix
-    ./components/terminal.user.nix
-    ./components/shell.user.nix
-    ./components/wm.user.nix
     ./components/bar.user.nix
-    ./components/spicetify.user.nix
-    ./components/rofi.user.nix
     ./components/dunst.user.nix
     ./components/fish.user.nix
-    ./components/nvim.user.nix
-    ./components/yazi.user.nix
     ./components/git.user.nix
+    ./components/globals.user.nix
+    ./components/nvim.user.nix
+    ./components/rofi.user.nix
+    ./components/shell.user.nix
+    ./components/spicetify.user.nix
+    ./components/terminal.user.nix
+    ./components/wm.user.nix
+    ./components/yazi.user.nix
     inputs.impermanence.nixosModules.home-manager.impermanence
   ];
 
