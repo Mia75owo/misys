@@ -1,7 +1,9 @@
 # Mia's NixOS System :)
 { inputs, config, pkgs, lib, ... }:
 
-{
+let inherit (import ./impermanence/persist.nix) persist-system;
+
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -34,22 +36,7 @@
   };
 
   fileSystems."/persist".neededForBoot = true;
-  environment.persistence."/persist/system" = {
-    hideMounts = true;
-    directories = [
-      "/var/log"
-      "/var/lib/bluetooth"
-      "/var/lib/nixos"
-      "/var/lib/systemd/coredump"
-      "/var/NetworkManager/system-connections"
-      "/etc/ssh"
-    ];
-    files = [
-      "/etc/machine-id"
-      { file = "/var/keys/secret_file"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
-    ];
-  };
-
+  environment.persistence."/persist/system" = persist-system;
 
   # Bootloader.
   boot.loader.grub.enable = true;

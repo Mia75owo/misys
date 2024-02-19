@@ -1,6 +1,8 @@
 { config, pkgs, inputs, ... }:
 
-{
+let inherit (import ./impermanence/persist.nix) persist-home;
+
+in {
   imports = [
     ./components/globals.user.nix
     ./components/terminal.user.nix
@@ -14,23 +16,17 @@
     ./components/nvim.user.nix
     ./components/yazi.user.nix
     inputs.impermanence.nixosModules.home-manager.impermanence
-    ./impermanence/persist.nix
   ];
 
   home.username = "mia";
   home.homeDirectory = "/home/mia";
 
+  # Persistence
+  home.persistence."/persist/home" = persist-home;
+
   home.packages = [ pkgs.dconf ];
-
-  home.sessionVariables = {
-    # EDITOR = "nvim";
-  };
-
+  home.sessionVariables = { };
   home.file = {};
-
-  # home.file.".gdbinit".text = ''
-  #   set auto-load safe-path /nix/store
-  # '';
 
   programs.git = {
     enable = true;
