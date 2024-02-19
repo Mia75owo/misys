@@ -128,6 +128,7 @@ in {
     ripgrep
     zip
     unzip
+    fzf
 
     lazygit
     btop
