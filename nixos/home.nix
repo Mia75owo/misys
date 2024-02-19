@@ -15,6 +15,7 @@ in {
     ./components/fish.user.nix
     ./components/nvim.user.nix
     ./components/yazi.user.nix
+    ./components/git.user.nix
     inputs.impermanence.nixosModules.home-manager.impermanence
   ];
 
@@ -26,13 +27,7 @@ in {
 
   home.packages = [ pkgs.dconf ];
   home.sessionVariables = { };
-  home.file = {};
-
-  programs.git = {
-    enable = true;
-    userName = "Mia";
-    userEmail = "miabernhardt75@gmail.com";
-  };
+  home.file = { };
 
   gtk = {
     enable = true;
