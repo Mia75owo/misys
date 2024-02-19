@@ -1,4 +1,4 @@
-DISK="/dev/vda"
+DISK="/dev/sda"
 
 # Ask for confirmation
 read -r -d '' WARNING <<- EOM
@@ -19,8 +19,8 @@ then
   # Install system
   nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko ./nixos/impermanence/disko.nix --arg device '"'$DISK'"'
   nixos-generate-config --root /mnt --no-filesystems
-  cp -r . /mnt/persist
-  cp /mnt/etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
-  nixos-install --root /mnt --flake /mnt/persist/misys
+  cp -r . /mnt/persist/misys
+  cp /mnt/etc/nixos/hardware-configuration.nix /mnt/persist/misys/nixos/hardware-configuration.nix
+  nixos-install --root /mnt --flake path:/mnt/persist/misys#nixos
 
 fi
