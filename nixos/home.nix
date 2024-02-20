@@ -47,7 +47,7 @@ in {
     "video/*" = [ "vlc.desktop" ];
   };
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "23.11";
 
   programs.home-manager.enable = true;
 }
