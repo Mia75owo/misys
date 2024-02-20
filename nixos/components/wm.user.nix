@@ -208,7 +208,7 @@ in {
           "Return" = "mode \"default\"";
           "Escape" = "mode \"default\"";
           "$mod+r" = "mode \"default\"";
-	};
+        };
       };
     };
   };

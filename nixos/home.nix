@@ -43,7 +43,7 @@ in {
   };
 
   xdg.mimeApps.defaultApplications = {
-    "text/plain" = [ "neovide.dekstop" ];
+    "text/plain" = [ "neovide.desktop" ];
     "video/*" = [ "vlc.desktop" ];
   };
 
