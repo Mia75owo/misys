@@ -27,6 +27,9 @@
 
       # Visuals
       background_opacity = "0.7";
+
+      # No confirm for close
+      confirm_os_window_close = "0";
     };
 
     keybindings = {

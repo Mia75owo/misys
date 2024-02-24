@@ -1,6 +1,7 @@
 {
   persist-home = {
     directories = [
+      "code"
       "Downloads"
       ".ssh"
       ".local/share/keyrings"

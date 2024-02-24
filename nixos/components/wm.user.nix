@@ -53,7 +53,6 @@ in {
       #exec --no-startup-id nm-applet
       #exec xset r rate 305 50
       #exec dunst
-      #exec_always setxkbmap -layout de -option caps:escape
       #exec_always ~/.config/polybar/launch.sh
         
       startup = [
