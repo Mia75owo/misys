@@ -5,6 +5,7 @@ let inherit (import ./impermanence/persist.nix) persist-home;
 in {
   imports = [
     ./components/bar.user.nix
+    ./components/chromium.user.nix
     ./components/dunst.user.nix
     ./components/fish.user.nix
     ./components/git.user.nix
