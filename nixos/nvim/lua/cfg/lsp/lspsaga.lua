@@ -13,7 +13,7 @@ return {
     { "<leader>rn", mode = { "n" }, "<cmd>Lspsaga rename<CR>",               desc = "LSP rename" },
     { "<leader>lf", mode = { "n" }, "<cmd>Lspsaga finder<CR>",               desc = "LSP find references" },
     { "<leader>hd", mode = { "n" }, "<cmd>Lspsaga hover_doc<CR>",            desc = "LSP hover doc" },
-    { "<leader>ld", mode = { "n" }, "<cmd>Lspsaga preview_definition<CR>",   desc = "LSP preview definition" },
+    { "<leader>ld", mode = { "n" }, "<cmd>Lspsaga peek_definition<CR>",      desc = "LSP preview definition" },
     { "<leader>lD", mode = { "n" }, "<cmd>Lspsaga goto_definition<CR>",      desc = "LSP goto definition" },
   },
 
