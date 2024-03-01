@@ -23,30 +23,30 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
-  let
-    system = "x86_64-linux";
+    let
+      system = "x86_64-linux";
 
-    pkgs = import nixpkgs {
-      inherit system;
+      pkgs = import nixpkgs {
+        inherit system;
 
-      config = {
-        allowUnfree = true;
+        config = {
+          allowUnfree = true;
+        };
+      };
+
+    in
+    {
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit system inputs; };
+
+          modules = [
+            inputs.disko.nixosModules.default
+            (import ./nixos/impermanence/disko.nix { device = "/dev/sda"; })
+
+            ./nixos/configuration.nix
+          ];
+        };
       };
     };
-
-  in
-  {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit system inputs; };
-
-        modules = [
-          inputs.disko.nixosModules.default
-          (import ./nixos/impermanence/disko.nix { device = "/dev/sda"; })
-
-          ./nixos/configuration.nix
-        ];
-      };
-    };
-  };
 }
