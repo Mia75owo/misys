@@ -111,6 +111,7 @@ in
     zip
     unzip
     fzf
+    gdb
 
     lazygit
     btop
