@@ -21,7 +21,18 @@
         cp ./compile_commands.json ../ &&
         cd .. &&
         rm -rf build
-        '';
+      '';
+      ya = ''
+        set tmp (mktemp -t "yazi-cwd.XXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+          cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
+      '';
+      rb = ''
+        sudo nixos-rebuild switch --flake path:/persist/misys#nixos
+      '';
     };
 
     plugins = [
