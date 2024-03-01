@@ -38,6 +38,7 @@ local plugins = {
   srequire("cfg.flash"),
   srequire("cfg.toggler"),
   srequire("cfg.telescope"),
+  srequire("cfg.whichkey"),
   srequire("cfg.yabs"),
   srequire("cfg.lsp.lsp"),
   srequire("cfg.lsp.lspsaga"),
