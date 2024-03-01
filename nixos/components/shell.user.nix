@@ -42,6 +42,9 @@
         fi
         rm -f -- "$tmp"
       '';
+      rb = ''
+        sudo nixos-rebuild switch --flake path:/persist/misys#nixos
+      '';
     };
 
     history = {
