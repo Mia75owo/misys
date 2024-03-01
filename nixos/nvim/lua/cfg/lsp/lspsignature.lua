@@ -5,7 +5,7 @@ return {
     local lsp_signature = require("lsp_signature")
     local cfg = {
       bind = true,
-      floating_window = false,
+      floating_window = true,
       doc_lines = 0,
       hint_enable = true,
       hint_prefix = "",
