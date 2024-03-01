@@ -80,6 +80,7 @@ in
     layout = "de";
     xkbVariant = "";
     xkbOptions = "caps:escape";
+    resolutions = [{ x = 1920; y = 1080; }];
   };
 
   # Configure console keymap
