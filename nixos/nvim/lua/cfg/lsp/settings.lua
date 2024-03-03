@@ -45,6 +45,7 @@ return {
         'Makefile',
         '.gitignore'
       }
+      ---@diagnostic disable-next-line: deprecated
       return lspconfig.util.root_pattern(unpack(files))(fname) or lspconfig.util.find_git_ancestor(fname)
     end,
   },
