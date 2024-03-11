@@ -13,6 +13,6 @@
   };
 
   home.file."${config.xdg.configHome}/rofi/catppuccin-mocha.rasi" = {
-    source = ../resources/catppuccin-mocha.rasi;
+    source = ../resources/catppuccin-mocha-rofi.rasi;
   };
 }
