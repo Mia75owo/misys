@@ -4,6 +4,7 @@ let inherit (import ./impermanence/persist.nix) persist-home;
 
 in {
   imports = [
+    ./components/btop.user.nix
     ./components/chromium.user.nix
     ./components/dunst.user.nix
     ./components/fish.user.nix
