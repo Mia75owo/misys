@@ -38,5 +38,25 @@
     plugins = [
       { name = "tide"; src = pkgs.fishPlugins.tide.src; }
     ];
+
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+      tide configure \
+        --auto \
+        --style=Classic \
+        --prompt_colors='True color' \
+        --classic_prompt_color=Light \
+        --show_time='24-hour format' \
+        --classic_prompt_separators=Angled \
+        --powerline_prompt_heads=Slanted \
+        --powerline_prompt_tails=Sharp \
+        --powerline_prompt_style='Two lines, frame' \
+        --prompt_connection=Disconnected \
+        --powerline_right_prompt_frame=No \
+        --prompt_connection_andor_frame_color=Light \
+        --prompt_spacing=Sparse \
+        --icons='Many icons' \
+        --transient=No
+    '';
   };
 }
