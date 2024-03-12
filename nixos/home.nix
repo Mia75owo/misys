@@ -12,6 +12,7 @@ in {
     ./components/globals.user.nix
     ./components/i3.user.nix
     ./components/kitty.user.nix
+    ./components/lazygit.user.nix
     ./components/nvim.user.nix
     ./components/polybar.user.nix
     ./components/rofi.user.nix
