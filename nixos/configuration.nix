@@ -23,6 +23,7 @@ in
 
   # Bootloader.
   boot.loader.grub.enable = true;
+  boot.loader.grub.gfxmodeBios = "1920x1080";
   boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
     pname = "catppuccin-mocha-grub";
     version = "1.0";
