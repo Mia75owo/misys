@@ -8,22 +8,26 @@
   services.dunst = {
     enable = true;
 
-    settings = {
-      global = {
-        width = 300;
-        height = 300;
-        offset = "30x50";
-        origin = "top-right";
-        transparency = 10;
-        frame_color = config.colors.pink;
-        font = "FiraCode Nerd Font Mono 12";
-      };
+    settings = (lib.mkMerge [
+      # Normal settings
+      ({
+        global = {
+          width = 300;
+          height = 300;
+          offset = "30x50";
+          origin = "top-right";
+          transparency = 10;
+          font = "FiraCode Nerd Font Mono 12";
+        };
 
-      urgency_normal = {
-        background = config.colors.base;
-        foreground = config.colors.pink;
-        timeout = 10;
-      };
-    };
+        urgency_normal = {
+          timeout = 10;
+        };
+      })
+
+      # Theme Config
+      (builtins.fromTOML (builtins.readFile ../resources/catppuccin-mocha-dunst.conf))
+    ]);
+
   };
 }
