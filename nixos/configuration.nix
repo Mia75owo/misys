@@ -23,7 +23,12 @@ in
 
   # Bootloader.
   boot.loader.grub.enable = true;
-
+  boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
+    pname = "catppuccin-mocha-grub";
+    version = "1.0";
+    src = ./resources/catppuccin-mocha-grub;
+    installPhase = "cp -r . $out";
+  };
 
   # Home Manager
   programs.fuse.userAllowOther = true;
