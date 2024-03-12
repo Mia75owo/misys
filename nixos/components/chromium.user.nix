@@ -30,9 +30,13 @@ in {
         id = "dbepggeogbaibhgnhhndojpepiihcmeb";
       }
       {
-        # Just Black (Theme)
-        id = "aghfnjkcakhmadgdomlmlhhaocbkloab";
+        # Catppuccin Mocha
+        id = "bkkmolkhemgaeaeggcmfbghljjjoofoh";
       }
+      #{
+      #  # Just Black (Theme)
+      #  id = "aghfnjkcakhmadgdomlmlhhaocbkloab";
+      #}
     ];
   };
 }
