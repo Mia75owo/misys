@@ -34,6 +34,7 @@ local plugins = {
   srequire("cfg.treesitter"),
   srequire("cfg.comments"),
   srequire("cfg.nvim-cmp"),
+  srequire("cfg.nvim-colorizer"),
   srequire("cfg.todocomments"),
   srequire("cfg.flash"),
   srequire("cfg.toggler"),
