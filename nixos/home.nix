@@ -17,6 +17,7 @@ in {
     ./components/polybar.user.nix
     ./components/rofi.user.nix
     ./components/spicetify.user.nix
+    ./components/vis.user.nix
     ./components/yazi.user.nix
     ./components/zsh.user.nix
     inputs.impermanence.nixosModules.home-manager.impermanence
