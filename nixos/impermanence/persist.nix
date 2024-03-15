@@ -8,6 +8,7 @@
       ".local/share/direnv"
       ".local/share/nvim"
       ".local/share/zsh"
+      ".config/spotify"
     ];
     allowOther = true;
   };
