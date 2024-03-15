@@ -58,7 +58,7 @@
       unset KITTY_SHELL_INTEGRATION
       ITERM_SHELL_INTEGRATION_INSTALLED=Yes
       [[ ! -f ${../resources/.p10k.zsh} ]] || source ${../resources/.p10k.zsh}
-      [[ ! -f ${../resources/catppuccin-mocha-zsh.zsh} ]] || source ${../resources/catppuccin-mocha-zsh.zsh}
+      # [[ ! -f ${../resources/catppuccin-mocha-zsh.zsh} ]] || source ${../resources/catppuccin-mocha-zsh.zsh}
     '';
 
     zplug = {
