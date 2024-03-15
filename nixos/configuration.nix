@@ -126,6 +126,7 @@ in
     xclip
     yazi
     zoxide
+    cli-visualizer
 
     clang
     cargo
