@@ -23,6 +23,7 @@ let
 
   picom = "${pkgs.picom}/bin/picom";
   feh = "${pkgs.feh}/bin/feh";
+  flameshot = "${pkgs.flameshot}/bin/flameshot";
   polybar = "/home/mia/.nix-profile/bin/polybar";
 
 in
@@ -190,7 +191,7 @@ in
         "${mod}+x" = "exec ${mainPowermenu}";
 
         # for screenshots
-        "${mod}+shift+s" = "exec flameshot gui";
+        "${mod}+shift+s" = "exec ${flameshot} gui";
       };
 
       modes = {

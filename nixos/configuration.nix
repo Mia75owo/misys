@@ -139,6 +139,8 @@ in
     neovide
     font-manager
     arandr
+    flameshot
+
     #nemo
 
     # language servers
