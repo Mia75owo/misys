@@ -6,7 +6,7 @@
 cwd = { fg = "#94e2d5" }
 
 # Hovered
-hovered         = { fg = "#1e1e2e", bg = "#89b4fa" }
+hovered         = { fg = "#1e1e2e", bg = "#f5c2e7" }
 preview_hovered = { underline = true }
 
 # Find
@@ -19,7 +19,7 @@ marker_copied   = { fg = "#f9e2af", bg = "#f9e2af" }
 marker_cut      = { fg = "#f38ba8", bg = "#f38ba8" }
 
 # Tab
-tab_active   = { fg = "#1e1e2e", bg = "#89b4fa" }
+tab_active   = { fg = "#1e1e2e", bg = "#f5c2e7" }
 tab_inactive = { fg = "#cdd6f4", bg = "#45475a" }
 tab_width    = 1
 
@@ -41,17 +41,17 @@ separator_close = ""
 separator_style = { fg = "#45475a", bg = "#45475a" }
 
 # Mode
-mode_normal = { fg = "#1e1e2e", bg = "#89b4fa", bold = true }
+mode_normal = { fg = "#1e1e2e", bg = "#f5c2e7", bold = true }
 mode_select = { fg = "#1e1e2e", bg = "#a6e3a1", bold = true }
 mode_unset  = { fg = "#1e1e2e", bg = "#f2cdcd", bold = true }
 
 # Progress
 progress_label  = { fg = "#ffffff", bold = true }
-progress_normal = { fg = "#89b4fa", bg = "#45475a" }
+progress_normal = { fg = "#f5c2e7", bg = "#45475a" }
 progress_error  = { fg = "#f38ba8", bg = "#45475a" }
 
 # Permissions
-permissions_t = { fg = "#89b4fa" }
+permissions_t = { fg = "#f5c2e7" }
 permissions_r = { fg = "#f9e2af" }
 permissions_w = { fg = "#f38ba8" }
 permissions_x = { fg = "#a6e3a1" }
@@ -63,7 +63,7 @@ permissions_s = { fg = "#7f849c" }
 # : Input {{{
 
 [input]
-border   = { fg = "#89b4fa" }
+border   = { fg = "#f5c2e7" }
 title    = {}
 value    = {}
 selected = { reversed = true }
@@ -74,7 +74,7 @@ selected = { reversed = true }
 # : Select {{{
 
 [select]
-border   = { fg = "#89b4fa" }
+border   = { fg = "#f5c2e7" }
 active   = { fg = "#f5c2e7" }
 inactive = {}
 
@@ -84,7 +84,7 @@ inactive = {}
 # : Tasks {{{
 
 [tasks]
-border  = { fg = "#89b4fa" }
+border  = { fg = "#f5c2e7" }
 title   = {}
 hovered = { underline = true }
 
@@ -139,7 +139,7 @@ rules = [
 
 	# Fallback
 	{ name = "*", fg = "#cdd6f4" },
-	{ name = "*/", fg = "#89b4fa" }
+	{ name = "*/", fg = "#f5c2e7" }
 ]
 
 # : }}}
