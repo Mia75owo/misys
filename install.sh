@@ -5,6 +5,7 @@ read -r -d '' WARNING <<- EOM
 WARNING:
 This script will install the config and can be dangerous!
 Make sure to change to config on top of this script!
+Current selected disk: $DISK
 Are you sure you want to continue? 
 (y/n):
 EOM
