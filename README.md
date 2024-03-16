@@ -1,4 +1,4 @@
-# My NixOS configuration
+# ❄️ My NixOS configuration ❄️
 
 My personal nix config.
 
@@ -19,9 +19,9 @@ The system is configured to be a good development environment for my personal us
 
 ### Screenshots
 
-<img src=".github/assets/system1.png" width="960px" height="540px">
-<img src=".github/assets/system2.png" width="960px" height="540px">
-<img src=".github/assets/system3.png" width="960px" height="540px">
+<img src=".github/assets/system1.png">
+<img src=".github/assets/system2.png">
+<img src=".github/assets/system3.png">
 
 ### Programs
 
