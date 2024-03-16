@@ -62,10 +62,11 @@ cd misys
 ```
 
 On the first boot you will get some errors, which you have to skip.
-Then you can run this and reboot into the (hopefully) working system.
+Then you can run this (from a tty) and reboot into the (hopefully) working system.
 
 ```sh
 /persist/misys/install_post.sh
+sudo nixos-rebuild switch --flake path:/persist/misys#nixos
 ```
 
 ### Todo
