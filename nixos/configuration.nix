@@ -86,6 +86,8 @@ in
     layout = "de";
     xkbVariant = "";
     xkbOptions = "caps:escape";
+    autoRepeatDelay = 300;
+    autoRepeatInterval = 50;
     resolutions = [{ x = 1920; y = 1080; }];
   };
 
