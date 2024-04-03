@@ -49,6 +49,7 @@ local plugins = {
 
 srequire("lazy").setup(plugins, {
   install = {
-    colorscheme = { "catppuccin-mocha" }
-  }
+    colorscheme = { "catppuccin-mocha" },
+  },
+  ui = { border = "rounded" },
 })
