@@ -10,6 +10,7 @@ return {
   keys = {
     { "<leader>sf", mode = { "n" }, "<cmd>Telescope find_files<CR>", desc = "Telescope find file" },
     { "<leader>es", mode = { "n" }, "<cmd>Telescope diagnostics<CR>", desc = "Telescope LSP diagnostics" },
+    { "<leader>rg", mode = { "n" }, "<cmd>Telescope live_grep<CR>", desc = "Telescope ripgrep" },
   },
 
   config = function()

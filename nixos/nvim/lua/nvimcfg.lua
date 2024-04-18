@@ -1,4 +1,4 @@
-local tabwidth = 2
+local tabwidth = 4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = tabwidth
 vim.opt.softtabstop = tabwidth
