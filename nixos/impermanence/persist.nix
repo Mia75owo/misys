@@ -4,6 +4,7 @@
       "code"
       "Downloads"
       ".ssh"
+      ".git-credentials"
       ".local/share/keyrings"
       ".local/share/direnv"
       ".local/share/nvim"
